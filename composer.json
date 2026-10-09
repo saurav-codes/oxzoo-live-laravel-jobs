@@ -1,0 +1,40 @@
+{
+    "name": "oxzoo/laravel-jobs",
+    "type": "project",
+    "description": "oxzoo-live: Laravel 12 with a MySQL database, a Redis queue worker and the scheduler, deployed with ox.",
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "ext-curl": "*",
+        "ext-pdo_mysql": "*",
+        "laravel/framework": "^12.0",
+        "predis/predis": "^3.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.6",
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

@@ -1,0 +1,22 @@
+# Laravel needs an ox.toml for [storage] keep; the start, install, migrate,
+# health and PHP packages still come from detection.
+
+# Empty on purpose: with an ox.toml, detection fills [app] only when the
+# table exists (the FrankenPHP start and /up health).
+[app]
+
+[build]
+commands = ["php artisan zoo:stamp"]
+
+[workers]
+queue = "exec php artisan queue:work redis --sleep=1 --tries=3 --max-time=3600"
+
+[cron]
+scheduler = { schedule = "* * * * *", run = "php artisan schedule:run" }
+
+[services]
+mysql = {}
+redis = {}
+
+[storage]
+keep = ["storage"]
