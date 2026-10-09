@@ -29,8 +29,8 @@ ack back to `POST /api/acks`.
 - `[services] mysql` (private MariaDB, `MYSQL_URL`) and `redis` (private, `REDIS_URL`).
 - `[storage] keep = ["storage"]`: compiled Blade views and the probe lock file.
 
-The empty `[app]` table in `ox.toml` is needed: with an ox.toml, detection fills the
-start and health only when the table exists.
+`ox.toml` has no `[app]` table: detection fills the FrankenPHP start and `/up` health
+without one (an empty `[app]` was needed until ox d89326bc).
 
 ## Endpoints
 
